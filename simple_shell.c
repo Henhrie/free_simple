@@ -3,6 +3,15 @@
 #include <unistd.h>
 #include <string.h>
 
+/**
+ * main - Entry point of the program.
+ *
+ * Description: This function implements a simple shell loop that prompts the user for a command,
+ * reads the command from stdin, parses it into arguments, and launches a process to execute the command.
+ * The loop continues until the user enters an exit command or an error occurs.
+ *
+ * Return: EXIT_SUCCESS on successful execution.
+ */
 int main(void)
 {
     char *line;
@@ -19,10 +28,15 @@ int main(void)
         free(args);
     } while (status);
 
-    return EXIT_SUCCESS;
+    return (EXIT_SUCCESS);
 }
 
-/* Read a line from stdin */
+/**
+ * read_line - Read a line from stdin.
+ *
+ * Return: The line read from stdin as a dynamically allocated string.
+ *         NULL if an error occurs or EOF is reached.
+ */
 char *read_line(void)
 {
     char *line = NULL;
@@ -37,10 +51,17 @@ char *read_line(void)
         }
     }
 
-    return line;
+    return (line);
 }
 
-/* Parse a line into arguments */
+/**
+ * parse_line - Parse a line into arguments.
+ *
+ * @line: The line to parse.
+ *
+ * Return: An array of pointers to the parsed arguments.
+ *         The last element of the array is NULL.
+ */
 char **parse_line(char *line)
 {
     int bufsize = 64;
@@ -70,10 +91,16 @@ char **parse_line(char *line)
         token = strtok(NULL, " \t\r\n\a");
     }
     tokens[position] = NULL;
-    return tokens;
+    return (tokens);
 }
 
-/* Launch a process */
+/**
+ * launch_process - Launch a process to execute a command.
+ *
+ * @args: An array of pointers to the arguments of the command.
+ *
+ * Return: 1 on successful execution of the command.
+ */
 int launch_process(char **args)
 {
     pid_t pid, wpid;
@@ -96,5 +123,5 @@ int launch_process(char **args)
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
     }
 
-    return 1;
+    return (1);
 }
