@@ -31,7 +31,7 @@ free(line);
 free(args);
 } while (status);
 
-    return (EXIT_SUCCESS);
+return (EXIT_SUCCESS);
 }
 
 /**
@@ -48,11 +48,13 @@ size_t bufsize = 0;
 
 if (getline(&line, &bufsize, stdin) == -1)
 {
-    if (feof(stdin)) {
-            exit(EXIT_SUCCESS);
-        } else {
-            perror("read_line");
-            exit(EXIT_FAILURE);
+    if (feof(stdin))
+    {
+    exit(EXIT_SUCCESS);
+        } else
+        {
+        perror("read_line");
+        exit(EXIT_FAILURE);
         }
     }
 
