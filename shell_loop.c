@@ -1,7 +1,10 @@
 #include "shell.h"
 
-/* Implement the shell_loop function */
-void shell_loop(void) {
+/**
+ * shell_loop - Executes the shell loop.
+ */
+void shell_loop(void)
+{
     char *line;
     char **args;
     int status;
