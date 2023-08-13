@@ -87,23 +87,23 @@ exit(EXIT_FAILURE);
 token = strtok(line, " \t\r\n\a");
 while (token != NULL)
 {
-    tokens[position] = token;
+tokens[position] = token;
     position++;
 
     if (position >= bufsize)
     {
     bufsize += 64;
-    tokens = realloc(tokens, bufsize * sizeof(char *));
+tokens = realloc(tokens, bufsize * sizeof(char *));
     if (!tokens)
     {
     perror("parse_line");
     exit(EXIT_FAILURE);
-            }
-        }
-
-        token = strtok(NULL, " \t\r\n\a");
     }
-    tokens[position] = NULL;
+    }
+
+    token = strtok(NULL, " \t\r\n\a");
+}
+tokens[position] = NULL;
 return (tokens);
 }
 
@@ -123,20 +123,21 @@ int status;
 pid = fork();
 if (pid == 0)
 {
-        /* Child process */
-    if (execvp(args[0], args) == -1) {
-        perror("launch_process");
-        }
-        exit(EXIT_FAILURE);
+    /* Child process */
+if (execvp(args[0], args) == -1)
+{
+    perror("launch_process");
+}
+    exit(EXIT_FAILURE);
     } else if (pid < 0) {
         /* Forking error */
         perror("launch_process");
     } else {
         /* Parent process */
-        do {
+    do {
             wpid = waitpid(pid, &status, WUNTRACED);
-        } while (!(WIFEXITED(status) || WIFSIGNALED(status)));
-    }
+    } while (!(WIFEXITED(status) || WIFSIGNALED(status)));
+}
 
 return (1);
 }
