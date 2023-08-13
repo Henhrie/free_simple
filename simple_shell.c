@@ -129,7 +129,8 @@ if (execvp(args[0], args) == -1)
     perror("launch_process");
 }
     exit(EXIT_FAILURE);
-    } else
+    }
+    else
     if (pid < 0)
     {
     /* Forking error */
@@ -139,7 +140,7 @@ if (execvp(args[0], args) == -1)
     {
     /* Parent process */
     do {
-        wpid = waitpid(pid, &status, WUNTRACED);
+    wpid = waitpid(pid, &status, WUNTRACED);
     } while (!(WIFEXITED(status) || WIFSIGNALED(status)));
 }
 
