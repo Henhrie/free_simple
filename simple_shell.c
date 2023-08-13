@@ -6,11 +6,13 @@
 /**
  * main - Entry point of the program.
  *
- * Description: This function implements a simple shell loop that prompts the user for a command,
- * reads the command from stdin, parses it into arguments, and launches a process to execute the command.
- * The loop continues until the user enters an exit command or an error occurs.
+ * Description:
+ *   Implements a simple shell loop that prompts the user for a command,
+ *   reads the command from stdin, parses it into arguments, and launches a process to execute it.
+ *   The loop continues until the user enters an exit command or an error occurs.
  *
- * Return: EXIT_SUCCESS on successful execution.
+ * Return:
+ *   (int) EXIT_SUCCESS on successful execution.
  */
 int main(void)
 {
@@ -34,8 +36,9 @@ int main(void)
 /**
  * read_line - Read a line from stdin.
  *
- * Return: The line read from stdin as a dynamically allocated string.
- *         NULL if an error occurs or EOF is reached.
+ * Return:
+ *   (char *) The line read from stdin as a dynamically allocated string.
+ *   NULL if an error occurs or EOF is reached.
  */
 char *read_line(void)
 {
@@ -59,14 +62,15 @@ char *read_line(void)
  *
  * @line: The line to parse.
  *
- * Return: An array of pointers to the parsed arguments.
- *         The last element of the array is NULL.
+ * Return:
+ *   (char **) An array of pointers to the parsed arguments.
+ *   The last element of the array is NULL.
  */
 char **parse_line(char *line)
 {
     int bufsize = 64;
     int position = 0;
-    char **tokens = malloc(bufsize * sizeof(char*));
+    char **tokens = malloc(bufsize * sizeof(char *));
     char *token;
 
     if (!tokens) {
@@ -81,7 +85,7 @@ char **parse_line(char *line)
 
         if (position >= bufsize) {
             bufsize += 64;
-            tokens = realloc(tokens, bufsize * sizeof(char*));
+            tokens = realloc(tokens, bufsize * sizeof(char *));
             if (!tokens) {
                 perror("parse_line");
                 exit(EXIT_FAILURE);
@@ -99,7 +103,8 @@ char **parse_line(char *line)
  *
  * @args: An array of pointers to the arguments of the command.
  *
- * Return: 1 on successful execution of the command.
+ * Return:
+ *   (int) 1 on successful execution of the command.
  */
 int launch_process(char **args)
 {
@@ -120,7 +125,7 @@ int launch_process(char **args)
         /* Parent process */
         do {
             wpid = waitpid(pid, &status, WUNTRACED);
-        } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+        } while (!(WIFEXITED(status) || WIFSIGNALED(status)));
     }
 
     return (1);
