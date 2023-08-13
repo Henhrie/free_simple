@@ -11,7 +11,6 @@
 #include <fcntl.h>
 #include <errno.h>
 
-
 /* Function prototypes */
 void shell_loop(void);
 char *read_line(void);
