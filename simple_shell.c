@@ -93,7 +93,7 @@ position++;
 if (position >= bufsize)
 {
 bufsize += 64;
-tokens = realloc(tokens, bufsize * sizeof(char *));
+tokens = realloc(tokens, bufsize *sizeof(char *));
 if (!tokens)
 {
 perror("parse_line");
