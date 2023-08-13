@@ -51,11 +51,11 @@ if (getline(&line, &bufsize, stdin) == -1)
     if (feof(stdin))
     {
     exit(EXIT_SUCCESS);
-        } else
-        {
-        perror("read_line");
-        exit(EXIT_FAILURE);
-        }
+    } else
+    {
+    perror("read_line");
+    exit(EXIT_FAILURE);
+    }
     }
 
 return (line);
@@ -84,16 +84,18 @@ exit(EXIT_FAILURE);
 }
 
 token = strtok(line, " \t\r\n\a");
-while (token != NULL) {
+while (token != NULL)
+{
     tokens[position] = token;
     position++;
 
-    if (position >= bufsize) {
-        bufsize += 64;
-        tokens = realloc(tokens, bufsize * sizeof(char *));
-        if (!tokens) {
-            perror("parse_line");
-            exit(EXIT_FAILURE);
+    if (position >= bufsize)
+    {
+    bufsize += 64;
+    tokens = realloc(tokens, bufsize * sizeof(char *));
+    if (!tokens) {
+        perror("parse_line");
+        exit(EXIT_FAILURE);
             }
         }
 
