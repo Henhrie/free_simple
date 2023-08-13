@@ -51,7 +51,8 @@ if (getline(&line, &bufsize, stdin) == -1)
     if (feof(stdin))
     {
     exit(EXIT_SUCCESS);
-    } else
+    }
+    else
     {
     perror("read_line");
     exit(EXIT_FAILURE);
@@ -93,9 +94,10 @@ while (token != NULL)
     {
     bufsize += 64;
     tokens = realloc(tokens, bufsize * sizeof(char *));
-    if (!tokens) {
-        perror("parse_line");
-        exit(EXIT_FAILURE);
+    if (!tokens)
+    {
+    perror("parse_line");
+    exit(EXIT_FAILURE);
             }
         }
 
@@ -119,7 +121,8 @@ pid_t pid, wpid;
 int status;
 
 pid = fork();
-if (pid == 0) {
+if (pid == 0)
+{
         /* Child process */
     if (execvp(args[0], args) == -1) {
         perror("launch_process");
