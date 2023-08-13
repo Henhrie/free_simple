@@ -22,6 +22,11 @@ char *line;
 char **args;
 int status;
 
+line = read_line();
+args = parse_line(line);
+status = launch_process(args);
+
+
 do {
 printf("($) ");
 line = read_line();
