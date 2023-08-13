@@ -15,5 +15,5 @@ signal(SIGINT, handle_signal);
     /* Run the shell loop */
 shell_loop();
 
-    return (EXIT_SUCCESS);
+return (EXIT_SUCCESS);
 }
