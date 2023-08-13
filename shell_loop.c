@@ -17,7 +17,6 @@ status = execute_command(args);
 
 free(line);
 free(args);
-}
-while (status);
+} while (status);
 
 }
