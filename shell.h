@@ -34,7 +34,7 @@ void replace_alias(Alias *aliases, int num_aliases, char *name, char *value);
 char *get_alias_value(Alias *aliases, int num_aliases, char *name);
 char *replace_variables(char *line, int last_status);
 char *remove_comments(char *line);
-int execute_commands(char ***commands, Alias *aliases, 
+int execute_commands(char ***commands, Alias *aliases,
 int *num_aliases, int *last_status);
 void execute_from_file(const char *filename, Alias *aliases, int *num_aliases);
 
