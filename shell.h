@@ -40,6 +40,4 @@ void execute_from_file(const char *filename, Alias *aliases, int *num_aliases);
 
 extern char **environ;
 
-
-
 #endif /* SHELL_H */
