@@ -48,16 +48,16 @@ size_t bufsize = 0;
 
 if (getline(&line, &bufsize, stdin) == -1)
 {
-    if (feof(stdin))
-    {
-    exit(EXIT_SUCCESS);
-    }
-    else
-    {
-    perror("read_line");
-    exit(EXIT_FAILURE);
-    }
-    }
+if (feof(stdin))
+{
+exit(EXIT_SUCCESS);
+}
+else
+{
+perror("read_line");
+exit(EXIT_FAILURE);
+}
+}
 
 return (line);
 }
@@ -88,20 +88,20 @@ token = strtok(line, " \t\r\n\a");
 while (token != NULL)
 {
 tokens[position] = token;
-    position++;
+position++;
 
-    if (position >= bufsize)
-    {
-    bufsize += 64;
+if (position >= bufsize)
+{
+bufsize += 64;
 tokens = realloc(tokens, bufsize * sizeof(char *));
-    if (!tokens)
-    {
-    perror("parse_line");
-    exit(EXIT_FAILURE);
-    }
-    }
+if (!tokens)
+{
+perror("parse_line");
+exit(EXIT_FAILURE);
+}
+}
 
-    token = strtok(NULL, " \t\r\n\a");
+token = strtok(NULL, " \t\r\n\a");
 }
 tokens[position] = NULL;
 return (tokens);
@@ -126,22 +126,22 @@ if (pid == 0)
     /* Child process */
 if (execvp(args[0], args) == -1)
 {
-    perror("launch_process");
+perror("launch_process");
 }
-    exit(EXIT_FAILURE);
-    }
-    else
-    if (pid < 0)
-    {
+exit(EXIT_FAILURE);
+}
+else
+if (pid < 0)
+{
     /* Forking error */
-    perror("launch_process");
-    }
-    else
-    {
+perror("launch_process");
+}
+else
+{
     /* Parent process */
-    do {
-    wpid = waitpid(pid, &status, WUNTRACED);
-    } while (!(WIFEXITED(status) || WIFSIGNALED(status)));
+do {
+wpid = waitpid(pid, &status, WUNTRACED);
+} while (!(WIFEXITED(status) || WIFSIGNALED(status)));
 }
 
 return (1);
