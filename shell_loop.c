@@ -9,8 +9,7 @@ char *line;
 char **args;
 int status;
 
-do
-{
+do{
 printf("($) ");
 line = read_line();
 args = parse_line(line);
