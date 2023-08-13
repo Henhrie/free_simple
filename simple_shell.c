@@ -8,27 +8,28 @@
  *
  * Description:
  *   Implements a simple shell loop that prompts the user for a command,
- *   reads the command from stdin, parses it into arguments, and launches a process to execute it.
- *   The loop continues until the user enters an exit command or an error occurs.
+ *   reads the command from stdin, parses it into arguments, and launches a
+ *   process to execute it.
+ *   The loop continues until the user enters an exit command or
+ *   an error occurs.
  *
  * Return:
  *   (int) EXIT_SUCCESS on successful execution.
  */
 int main(void)
 {
-    char *line;
-    char **args;
-    int status;
+char *line;
+char **args;
+int status;
 
-    do {
-        printf("($) ");
-        line = read_line();
-        args = parse_line(line);
-        status = launch_process(args);
-
-        free(line);
-        free(args);
-    } while (status);
+do {
+printf("($) ");
+line = read_line();
+args = parse_line(line);
+status = launch_process(args);
+free(line);
+free(args);
+} while (status);
 
     return (EXIT_SUCCESS);
 }
@@ -42,11 +43,12 @@ int main(void)
  */
 char *read_line(void)
 {
-    char *line = NULL;
-    size_t bufsize = 0;
+char *line = NULL;
+size_t bufsize = 0;
 
-    if (getline(&line, &bufsize, stdin) == -1) {
-        if (feof(stdin)) {
+if (getline(&line, &bufsize, stdin) == -1)
+{
+    if (feof(stdin)) {
             exit(EXIT_SUCCESS);
         } else {
             perror("read_line");
@@ -54,7 +56,7 @@ char *read_line(void)
         }
     }
 
-    return (line);
+return (line);
 }
 
 /**
@@ -68,34 +70,35 @@ char *read_line(void)
  */
 char **parse_line(char *line)
 {
-    int bufsize = 64;
-    int position = 0;
-    char **tokens = malloc(bufsize * sizeof(char *));
-    char *token;
+int bufsize = 64;
+int position = 0;
+char **tokens = malloc(bufsize * sizeof(char *));
+char *token;
 
-    if (!tokens) {
-        perror("parse_line");
-        exit(EXIT_FAILURE);
-    }
+if (!tokens)
+{
+perror("parse_line");
+exit(EXIT_FAILURE);
+}
 
-    token = strtok(line, " \t\r\n\a");
-    while (token != NULL) {
-        tokens[position] = token;
-        position++;
+token = strtok(line, " \t\r\n\a");
+while (token != NULL) {
+    tokens[position] = token;
+    position++;
 
-        if (position >= bufsize) {
-            bufsize += 64;
-            tokens = realloc(tokens, bufsize * sizeof(char *));
-            if (!tokens) {
-                perror("parse_line");
-                exit(EXIT_FAILURE);
+    if (position >= bufsize) {
+        bufsize += 64;
+        tokens = realloc(tokens, bufsize * sizeof(char *));
+        if (!tokens) {
+            perror("parse_line");
+            exit(EXIT_FAILURE);
             }
         }
 
         token = strtok(NULL, " \t\r\n\a");
     }
     tokens[position] = NULL;
-    return (tokens);
+return (tokens);
 }
 
 /**
@@ -108,14 +111,14 @@ char **parse_line(char *line)
  */
 int launch_process(char **args)
 {
-    pid_t pid, wpid;
-    int status;
+pid_t pid, wpid;
+int status;
 
-    pid = fork();
-    if (pid == 0) {
+pid = fork();
+if (pid == 0) {
         /* Child process */
-        if (execvp(args[0], args) == -1) {
-            perror("launch_process");
+    if (execvp(args[0], args) == -1) {
+        perror("launch_process");
         }
         exit(EXIT_FAILURE);
     } else if (pid < 0) {
@@ -128,5 +131,5 @@ int launch_process(char **args)
         } while (!(WIFEXITED(status) || WIFSIGNALED(status)));
     }
 
-    return (1);
+return (1);
 }
