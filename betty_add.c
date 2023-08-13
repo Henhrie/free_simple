@@ -9,7 +9,7 @@
  */
 int add_numbers(int a, int b)
 {
-    return (a + b);
+return (a + b);
 }
 
 /**
@@ -19,12 +19,12 @@ int add_numbers(int a, int b)
  */
 int main(void)
 {
-    int num1 = 5;
-    int num2 = 7;
-    int sum;
+int num1 = 5;
+int num2 = 7;
+int sum;
 
-    sum = add_numbers(num1, num2);
-    printf("The sum of %d and %d is %d\n", num1, num2, sum);
+sum = add_numbers(num1, num2);
+printf("The sum of %d and %d is %d\n", num1, num2, sum);
 
-    return (0);
+return (0);
 }
