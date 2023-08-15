@@ -113,7 +113,7 @@ output = -result;
 
 else
 
-output = result;
+(output = result;
 return (output);
 
  }
