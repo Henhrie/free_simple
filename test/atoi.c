@@ -115,8 +115,6 @@ output = -result;
 else
 
 output = result;
-
-
 return (output);
 
 }
