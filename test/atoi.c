@@ -12,7 +12,7 @@ int interactive(info_t *info)
 
 {
 
-        return (isatty(STDIN_FILENO) && info->readfd <= 2);
+return (isatty(STDIN_FILENO) && info->readfd <= 2);
 
 }
 
@@ -29,13 +29,13 @@ int is_delim(char c, char *delim)
 
 {
 
-        while (*delim)
+while (*delim)
 
-                if (*delim++ == c)
+if (*delim++ == c)
 
-                        return (1);
+return (1);
 
-        return (0);
+return (0);
 
 }
 
@@ -52,13 +52,13 @@ int _isalpha(int c)
 
 {
 
-        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 
-                return (1);
+return (1);
 
-        else
+else
 
-                return (0);
+return (0);
 
 }
 
@@ -75,48 +75,48 @@ int _atoi(char *s)
 
 {
 
-        int i, sign = 1, flag = 0, output;
+int i, sign = 1, flag = 0, output;
 
-        unsigned int result = 0;
-
-
-        for (i = 0; s[i] != '\0' && flag != 2; i++)
-
-        {
-
-                if (s[i] == '-')
-
-                        sign *= -1;
+unsigned int result = 0;
 
 
-                if (s[i] >= '0' && s[i] <= '9')
+for (i = 0; s[i] != '\0' && flag != 2; i++)
 
-                {
+{
 
-                        flag = 1;
+if (s[i] == '-')
 
-                        result *= 10;
-
-                        result += (s[i] - '0');
-
-                }
-
-                else if (flag == 1)
-
-                        flag = 2;
-
-        }
+sign *= -1;
 
 
-        if (sign == -1)
+if (s[i] >= '0' && s[i] <= '9')
 
-                output = -result;
+{
 
-        else
+flag = 1;
 
-                output = result;
+result *= 10;
+
+result += (s[i] - '0');
+
+}
+
+else if (flag == 1)
+
+flag = 2;
+
+}
 
 
-        return (output);
+if (sign == -1)
+
+output = -result;
+
+else
+
+output = result;
+
+
+return (output);
 
 }
