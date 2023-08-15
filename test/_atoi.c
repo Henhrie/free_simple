@@ -72,7 +72,6 @@ return (0);
 
 
 int _atoi(char *s)
-
 {
 
 int i, sign = 1, flag = 0, output;
@@ -113,8 +112,8 @@ if (sign == -1)
 output = -result;
 
 else
-{
+
 output = result;
 return (output);
 
-}
+ }
