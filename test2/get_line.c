@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * input_buf - buffers chained commands
- * @info: parameter struct
- * @buf: address of buffer
- * @len: address of len var
+ * input_buf - The buffers chained commands
+ * @info: is the parameter structure
+ * @buf: is the address of the buffer
+ * @len: is the address of the len var
  *
  * Return: bytes read
  */
@@ -45,8 +45,8 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 }
 
 /**
- * get_input - gets a line minus the newline
- * @info: parameter struct
+ * get_input - Gets a line minus the newline
+ * @info: The parameter structure
  *
  * Return: bytes read
  */
@@ -90,10 +90,10 @@ ssize_t get_input(info_t *info)
 }
 
 /**
- * read_buf - reads a buffer
- * @info: parameter struct
- * @buf: buffer
- * @i: size
+ * read_buf - Reads a buffer
+ * @info: is the parameter structure
+ * @buf: is the buffer
+ * @i: is the size
  *
  * Return: r
  */
@@ -110,10 +110,10 @@ ssize_t read_buf(info_t *info, char *buf, size_t *i)
 }
 
 /**
- * _getline - gets the next line of input from STDIN
- * @info: parameter struct
- * @ptr: address of pointer to buffer, preallocated or NULL
- * @length: size of preallocated ptr buffer if not NULL
+ * _getline - Gets the next line of input from STDIN
+ * @info: is the parameter structure
+ * @ptr: is the address of pointer to buffer, preallocated or NULL
+ * @length: is the size of preallocated ptr buffer if not NULL
  *
  * Return: s
  */
@@ -157,8 +157,8 @@ int _getline(info_t *info, char **ptr, size_t *length)
 }
 
 /**
- * sigintHandler - blocks ctrl-C
- * @sig_num: the signal number
+ * sigintHandler - Blocks ctrl-C
+ * @sig_num: is the signal number
  *
  * Return: void
  */
